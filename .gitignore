@@ -1,0 +1,22 @@
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+*.env
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Build / temp
+node_modules/
+dist/
+build/
+*.log
+
+# Deploy artifacts (keep if you want)
+# netlify.toml is committed on purpose
