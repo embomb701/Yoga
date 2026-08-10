@@ -70,6 +70,19 @@ nav {
   white-space: nowrap;
 }
 
+.logo-image-link {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.site-logo-image {
+  width: 108px;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -512,8 +525,13 @@ main section:not(.hero-section) {
   }
 
   .logo {
-    width: 100%;
+    width: auto;
     text-align: center;
+  }
+
+  .site-logo-image {
+    width: 90px;
+    margin: 0 auto;
   }
 
   .hero-section {
