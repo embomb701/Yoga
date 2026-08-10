@@ -20,3 +20,6 @@ build/
 
 # Deploy artifacts (keep if you want)
 # netlify.toml is committed on purpose
+
+# Local Netlify folder
+.netlify
