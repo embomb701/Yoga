@@ -1,150 +1,76 @@
 /* Yoga with Dylan – script.js */
 
-// ========== UI Audio ===========
-const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+let audioContext = null;
 let isMuted = false;
-let sounds = {};
-
+const sounds = {};
 const soundFiles = {
   chime: 'assets/audio/chime.mp3',
   whoosh: 'assets/audio/whoosh.mp3',
   breath: 'assets/audio/breath.mp3',
   move: 'assets/audio/move.mp3',
   reset: 'assets/audio/reset.mp3',
-  'be-you': 'assets/audio/be-you.mp3',
+  'be-you': 'assets/audio/be-you.mp3'
 };
 
-function loadSound(name, url) {
-  fetch(url)
-    .then(r => r.arrayBuffer())
-    .then(data => audioContext.decodeAudioData(data))
-    .then(buffer => {
-      sounds[name] = buffer;
-    });
+function ensureAudioContext() {
+  if (!audioContext) {
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    if (!Ctx) return null;
+    audioContext = new Ctx();
+  }
+  return audioContext;
 }
 
-for (const k in soundFiles) loadSound(k, soundFiles[k]);
+async function loadSound(name, url) {
+  try {
+    const ctx = ensureAudioContext();
+    if (!ctx) return;
+    const res = await fetch(url);
+    const buf = await res.arrayBuffer();
+    const decoded = await ctx.decodeAudioData(buf.slice(0));
+    sounds[name] = decoded;
+  } catch (err) {
+    console.warn('Audio load skipped for', name, err?.message || err);
+  }
+}
+
+function primeAudio() {
+  const ctx = ensureAudioContext();
+  if (!ctx) return;
+  if (ctx.state === 'suspended') ctx.resume().catch(() => {});
+  Object.entries(soundFiles).forEach(([name, url]) => {
+    if (!sounds[name]) loadSound(name, url);
+  });
+}
 
 function playSound(name) {
-  if (isMuted || !sounds[name]) return;
-  const src = audioContext.createBufferSource();
-  src.buffer = sounds[name];
-  src.connect(audioContext.destination);
-  src.start(0);
-}
-
-// UI event triggers
-function bindSoundTriggers() {
-  document.querySelectorAll('[data-sound]').forEach(el => {
-    el.addEventListener('pointerenter', e => playSound(el.getAttribute('data-sound')));
-    // Also support click for mobile/touch
-    el.addEventListener('click', e => playSound(el.getAttribute('data-sound')));
-  });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Resume audio context on first interaction (required by browsers)
-  const resumeAudio = () => {
-    if (audioContext.state === 'suspended') audioContext.resume();
-  };
-  document.addEventListener('pointerdown', resumeAudio, { once: true });
-
-  // Audio mute toggle
-  const toggleBtn = document.getElementById('audio-toggle');
-  toggleBtn.addEventListener('click', () => {
-    isMuted = !isMuted;
-    toggleBtn.setAttribute('aria-pressed', isMuted);
-  });
-  bindSoundTriggers();
-
-  // Animate hero BG (particles/light rays)
-  animateHeroBG();
-
-  // Magnetic CTAs
-  addMagnetic();
-
-  // Scroll reveals
-  setupScrollReveals();
-});
-
-// ====== Hero Background Animation (canvas) ======
-function animateHeroBG() {
-  const canvas = document.getElementById('bg-canvas');
-  if (!canvas) return;
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight * 1.1;
-  const ctx = canvas.getContext('2d');
-  let frame = 0;
-
-  // Floating leaf shapes
-  const leaves = Array.from({length: 9}).map(() => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: 36 + Math.random() * 32,
-    spd: Math.random() * 0.2 + 0.05,
-    dx: Math.random() * 0.5 - 0.25,
-    a: Math.random() * Math.PI * 2
-  }));
-  // Light rays
-  const rays = Array.from({length: 7}).map((_,i) => ({
-    x: canvas.width/2 + (i-3.5)*140,
-    y: canvas.height * 0.15 + (i%2)*40,
-    l: canvas.height*0.8,
-    rot: (i-3)*0.16,
-    alp: Math.random()*0.2+0.12
-  }));
-
-  function draw() {
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    // Rays
-    rays.forEach(ray => {
-      ctx.save();
-      ctx.translate(ray.x, ray.y);
-      ctx.rotate(ray.rot + Math.sin(frame*0.008 + ray.x)*0.038);
-      ctx.globalAlpha = ray.alp + 0.06 * Math.sin(frame*0.01+ray.x);
-      var grad = ctx.createLinearGradient(0,0,0,ray.l);
-      grad.addColorStop(0, '#fff6e8DD');
-      grad.addColorStop(0.9, '#fff6e800');
-      ctx.fillStyle = grad;
-      ctx.fillRect(-21, 0, 42, ray.l);
-      ctx.restore();
-    });
-    // Leaves (simple ovals)
-    leaves.forEach(l => {
-      ctx.save();
-      ctx.translate(l.x, l.y);
-      ctx.rotate(l.a + Math.sin(frame*0.002+l.x)*0.3);
-      ctx.globalAlpha = 0.13 + 0.11*Math.sin(frame*0.01+l.y);
-      ctx.beginPath();
-      ctx.ellipse(0, 0, l.r, l.r*0.38, 0, 0, Math.PI*2);
-      ctx.fillStyle = '#C45C2644';
-      ctx.shadowColor = '#C45C2633';
-      ctx.shadowBlur = 7;
-      ctx.fill();
-      ctx.restore();
-      // Animate
-      l.x += l.dx + 0.05 * Math.sin(frame*0.007+l.a);
-      l.y += l.spd;
-      if (l.y > canvas.height+60) { l.y = -60; l.x = Math.random()*canvas.width; }
-    });
-    frame++;
-    requestAnimationFrame(draw);
+  const ctx = ensureAudioContext();
+  if (!ctx || isMuted || !sounds[name]) return;
+  try {
+    const src = ctx.createBufferSource();
+    src.buffer = sounds[name];
+    src.connect(ctx.destination);
+    src.start(0);
+  } catch (err) {
+    console.warn('Audio playback skipped', err?.message || err);
   }
-  draw();
-  // Responsive resize
-  window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight * 1.1;
+}
+
+function bindSoundTriggers() {
+  document.querySelectorAll('[data-sound]').forEach((el) => {
+    const sound = el.getAttribute('data-sound');
+    if (!sound) return;
+    el.addEventListener('pointerenter', () => playSound(sound));
+    el.addEventListener('click', () => playSound(sound));
   });
 }
 
-// Magnetic effect for buttons
 function addMagnetic() {
   document.querySelectorAll('.magnetic').forEach((btn) => {
     btn.addEventListener('mousemove', (e) => {
       const rect = btn.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 14;
-      const y = ((e.clientY - rect.top) / rect.height - 0.5) * 10;
+      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
+      const y = ((e.clientY - rect.top) / rect.height - 0.5) * 7;
       btn.style.transform = `translate(${x}px, ${y}px)`;
     });
     btn.addEventListener('mouseleave', () => {
@@ -153,18 +79,64 @@ function addMagnetic() {
   });
 }
 
-// Scroll reveal for sections and cards
 function setupScrollReveals() {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-      }
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.philosophy-section, .class-card, .testimonial, .about-content, .schedule-section').forEach((el) => {
-    el.classList.add('reveal');
-    observer.observe(el);
-  });
+  const targets = document.querySelectorAll('.philo-card, .class-card, .testimonial, .about-content, .schedule-section');
+  targets.forEach((el) => el.classList.add('revealed'));
 }
+
+function setupPhotoCarousel() {
+  const track = document.querySelector('.about-carousel-track');
+  const slides = Array.from(document.querySelectorAll('.about-slide'));
+  const dotsWrap = document.querySelector('.about-carousel-dots');
+  if (!track || slides.length === 0 || !dotsWrap) return;
+
+  let current = 0;
+  let timer = null;
+
+  function renderDots() {
+    dotsWrap.innerHTML = slides.map((_, i) =>
+      `<button class="about-dot${i === current ? ' active' : ''}" aria-label="Show photo ${i + 1}"></button>`
+    ).join('');
+
+    Array.from(dotsWrap.querySelectorAll('.about-dot')).forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        goTo(i);
+        restart();
+      });
+    });
+  }
+
+  function goTo(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('is-active', i === current));
+    renderDots();
+  }
+
+  function restart() {
+    if (timer) clearInterval(timer);
+    if (slides.length > 1) {
+      timer = setInterval(() => goTo(current + 1), 4500);
+    }
+  }
+
+  goTo(0);
+  restart();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('pointerdown', primeAudio, { once: true });
+  document.addEventListener('keydown', primeAudio, { once: true });
+
+  const toggleBtn = document.getElementById('audio-toggle');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      isMuted = !isMuted;
+      toggleBtn.setAttribute('aria-pressed', String(isMuted));
+    });
+  }
+
+  bindSoundTriggers();
+  addMagnetic();
+  setupScrollReveals();
+  setupPhotoCarousel();
+});

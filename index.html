@@ -13,7 +13,7 @@
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-  <header class="site-header sticky-glass">
+  <header class="site-header">
     <nav aria-label="Main Navigation">
       <a href="#hero" class="logo" aria-label="Yoga with Dylan Home">Yoga with Dylan</a>
       <ul class="nav-links">
@@ -28,43 +28,27 @@
       </button>
     </nav>
   </header>
+
   <main>
-    <!-- HERO SECTION -->
     <section id="hero" class="hero-section">
       <div class="hero-bg">
-        <!-- Animated background: light rays + botanicals (handled by CSS & JS) -->
-        <canvas id="bg-canvas" aria-hidden="true"></canvas>
-        <div class="grain-overlay"></div>
+        <img src="assets/images/hero-banner.jpg" alt="Yoga with Dylan - Come as you are. Rooted in presence, guided by intention, open to everyone." class="hero-image">
+        <div class="hero-overlay"></div>
       </div>
-      <div class="hero-content">
-        <h1 class="tagline">COME AS YOU ARE</h1>
-        <h2 class="brand">YOGA <span>with Dylan</span></h2>
-        <div class="hero-ctas">
-          <a href="#schedule" class="btn btn-primary magnetic" data-sound="chime">Join a Class</a>
-          <a href="#philosophy" class="btn btn-secondary" data-sound="whoosh">Begin Here</a>
-        </div>
-        <div class="hero-icons">
-          <div class="icon-block" data-sound="breath">
-            <img src="assets/icons/breathe.svg" alt="Breathe icon">
-            <span>Breathe</span>
-          </div>
-          <div class="icon-block" data-sound="move">
-            <img src="assets/icons/move.svg" alt="Move icon">
-            <span>Move</span>
-          </div>
-          <div class="icon-block" data-sound="reset">
-            <img src="assets/icons/reset.svg" alt="Reset icon">
-            <span>Reset</span>
-          </div>
-          <div class="icon-block" data-sound="be-you">
-            <img src="assets/icons/be-you.svg" alt="Be You icon">
-            <span>Be You</span>
-          </div>
-        </div>
+
+      <div class="hero-ctas">
+        <a href="#schedule" class="btn btn-primary magnetic" data-sound="chime">Join a Class</a>
+        <a href="#philosophy" class="btn btn-secondary" data-sound="whoosh">Begin Here</a>
+      </div>
+
+      <div class="hero-bottom-bar">
+        <span>🌿 ALL LEVELS</span>
+        <span>♡ ALL BODIES</span>
+        <span>✿ ALL HEARTS</span>
+        <span class="belong">You belong here. ♡</span>
       </div>
     </section>
 
-    <!-- PHILOSOPHY -->
     <section id="philosophy" class="philosophy-section">
       <div class="section-header">
         <h2>Our Philosophy</h2>
@@ -94,7 +78,6 @@
       </div>
     </section>
 
-    <!-- CLASSES -->
     <section id="classes" class="classes-section">
       <div class="section-header">
         <h2>Classes for Every Body</h2>
@@ -140,22 +123,34 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
     <section id="about" class="about-section">
-      <div class="about-content">
+      <div class="about-content reveal">
         <div class="about-text">
           <h2>Meet Dylan</h2>
           <p>Dylan has been sharing yoga for over 12 years. Their teaching is rooted in accessibility, breath, and the radical idea that everyone belongs on the mat.</p>
           <p>Trained in multiple lineages with a deep focus on trauma-informed practices and meeting students exactly where they are. Whether you’re brand new or have been practicing for decades, you’ll find a home here.</p>
           <p>Classes emphasize kindness over achievement and presence over perfection.</p>
         </div>
+
         <div class="about-visual">
-          <div class="photo-placeholder" aria-hidden="true"></div>
+          <div class="about-carousel" aria-label="Meet Dylan photos">
+            <div class="about-carousel-track">
+              <figure class="about-slide is-active">
+                <img src="assets/images/dylan-studio.jpg" alt="Dylan seated in meditation in a warmly lit olive-green studio" class="dylan-photo">
+              </figure>
+              <figure class="about-slide">
+                <img src="assets/images/dylan-class.jpg" alt="Yoga class in a dark studio with students resting on mats" class="dylan-photo">
+              </figure>
+              <figure class="about-slide">
+                <img src="assets/images/dylan-beach.jpg" alt="Dylan balancing in a yoga pose on a shell-covered beach under a wide sky" class="dylan-photo">
+              </figure>
+            </div>
+            <div class="about-carousel-dots" aria-label="Photo selector"></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
     <section id="testimonials" class="testimonials-section">
       <h2>Voices from the Community</h2>
       <div class="testimonials-grid">
@@ -178,7 +173,6 @@
       </div>
     </section>
 
-    <!-- SCHEDULE -->
     <section id="schedule" class="schedule-section">
       <div class="section-header">
         <h2>Weekly Schedule</h2>
@@ -240,9 +234,11 @@
       </div>
     </section>
   </main>
+
   <footer class="site-footer">
-    <p>You belong here.</p>
+    <p>You belong here. ♡</p>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
