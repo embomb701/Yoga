@@ -1,0 +1,11 @@
+[build]
+  publish = "."
+
+[build.environment]
+  # Static site — no build step needed
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"

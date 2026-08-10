@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yoga with Dylan – Come as you are. Premium yoga, all levels, all bodies, all hearts.">
+  <meta property="og:title" content="Yoga with Dylan">
+  <meta property="og:description" content="Come as you are. Space to breathe. Time to be you. A premium yoga experience for everyone.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/og-preview.jpg">
+  <title>Yoga with Dylan</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="site-header sticky-glass">
+    <nav aria-label="Main Navigation">
+      <a href="#hero" class="logo" aria-label="Yoga with Dylan Home">Yoga with Dylan</a>
+      <ul class="nav-links">
+        <li><a href="#philosophy">Philosophy</a></li>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+      </ul>
+      <button id="audio-toggle" class="audio-btn" aria-pressed="false" aria-label="Toggle site sounds">
+        <span class="icon-mute"></span>
+      </button>
+    </nav>
+  </header>
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section">
+      <div class="hero-bg">
+        <!-- Animated background: light rays + botanicals (handled by CSS & JS) -->
+        <canvas id="bg-canvas" aria-hidden="true"></canvas>
+        <div class="grain-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <h1 class="tagline">COME AS YOU ARE</h1>
+        <h2 class="brand">YOGA <span>with Dylan</span></h2>
+        <div class="hero-ctas">
+          <a href="#schedule" class="btn btn-primary magnetic" data-sound="chime">Join a Class</a>
+          <a href="#philosophy" class="btn btn-secondary" data-sound="whoosh">Begin Here</a>
+        </div>
+        <div class="hero-icons">
+          <div class="icon-block" data-sound="breath">
+            <img src="assets/icons/breathe.svg" alt="Breathe icon">
+            <span>Breathe</span>
+          </div>
+          <div class="icon-block" data-sound="move">
+            <img src="assets/icons/move.svg" alt="Move icon">
+            <span>Move</span>
+          </div>
+          <div class="icon-block" data-sound="reset">
+            <img src="assets/icons/reset.svg" alt="Reset icon">
+            <span>Reset</span>
+          </div>
+          <div class="icon-block" data-sound="be-you">
+            <img src="assets/icons/be-you.svg" alt="Be You icon">
+            <span>Be You</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section id="philosophy" class="philosophy-section">
+      <div class="section-header">
+        <h2>Our Philosophy</h2>
+        <p class="lead">Yoga is not about the perfect pose. It’s about coming home to yourself, breath by breath.</p>
+      </div>
+      <div class="philosophy-grid">
+        <div class="philo-card" data-sound="breath">
+          <img src="assets/icons/breathe.svg" alt="Breathe">
+          <h3>Come as you are</h3>
+          <p>No experience required. No perfect body. Just show up exactly as you are.</p>
+        </div>
+        <div class="philo-card" data-sound="move">
+          <img src="assets/icons/move.svg" alt="Move">
+          <h3>Move with intention</h3>
+          <p>Every posture is an invitation to listen. Strength and softness live together here.</p>
+        </div>
+        <div class="philo-card" data-sound="reset">
+          <img src="assets/icons/reset.svg" alt="Reset">
+          <h3>Reset &amp; return</h3>
+          <p>Leave the noise at the door. Find stillness that travels with you off the mat.</p>
+        </div>
+        <div class="philo-card" data-sound="be-you">
+          <img src="assets/icons/be-you.svg" alt="Be You">
+          <h3>Be fully you</h3>
+          <p>This is your space to feel, to rest, to grow — without judgment or comparison.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLASSES -->
+    <section id="classes" class="classes-section">
+      <div class="section-header">
+        <h2>Classes for Every Body</h2>
+        <p class="lead">Thoughtful sequences. Welcoming energy. All levels, all ages, all hearts.</p>
+      </div>
+      <div class="classes-grid">
+        <article class="class-card" data-sound="breath">
+          <div class="card-head">Gentle Flow</div>
+          <div class="card-body">
+            <h3>Gentle Flow</h3>
+            <div class="meta">All levels • 60 min</div>
+            <p>A slow, breath-led vinyasa. Perfect for beginners or anyone craving mindful movement.</p>
+            <a href="#schedule" class="btn btn-secondary small" data-sound="chime">Reserve spot</a>
+          </div>
+        </article>
+        <article class="class-card" data-sound="move">
+          <div class="card-head">Restorative</div>
+          <div class="card-body">
+            <h3>Restorative Yoga</h3>
+            <div class="meta">All levels • 75 min</div>
+            <p>Deep rest with props. Release tension and let the nervous system settle.</p>
+            <a href="#schedule" class="btn btn-secondary small" data-sound="chime">Reserve spot</a>
+          </div>
+        </article>
+        <article class="class-card" data-sound="reset">
+          <div class="card-head">Yin &amp; Still</div>
+          <div class="card-body">
+            <h3>Yin &amp; Meditation</h3>
+            <div class="meta">All levels • 75 min</div>
+            <p>Long-held postures + guided stillness. Cultivate presence and deep release.</p>
+            <a href="#schedule" class="btn btn-secondary small" data-sound="chime">Reserve spot</a>
+          </div>
+        </article>
+        <article class="class-card" data-sound="be-you">
+          <div class="card-head">Foundations</div>
+          <div class="card-body">
+            <h3>Foundations</h3>
+            <div class="meta">Beginners welcome • 60 min</div>
+            <p>Learn the basics with care. Build confidence, alignment, and breath awareness.</p>
+            <a href="#schedule" class="btn btn-secondary small" data-sound="chime">Reserve spot</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about-section">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>Meet Dylan</h2>
+          <p>Dylan has been sharing yoga for over 12 years. Their teaching is rooted in accessibility, breath, and the radical idea that everyone belongs on the mat.</p>
+          <p>Trained in multiple lineages with a deep focus on trauma-informed practices and meeting students exactly where they are. Whether you’re brand new or have been practicing for decades, you’ll find a home here.</p>
+          <p>Classes emphasize kindness over achievement and presence over perfection.</p>
+        </div>
+        <div class="about-visual">
+          <div class="photo-placeholder" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="testimonials-section">
+      <h2>Voices from the Community</h2>
+      <div class="testimonials-grid">
+        <blockquote class="testimonial">
+          <p>“For the first time in years I felt safe and seen in a yoga class. Dylan creates magic.”</p>
+          <cite>— Lena T.</cite>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>“The breath work and gentle pace changed how I move through my whole week.”</p>
+          <cite>— Marcus K.</cite>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>“I’ve never felt more welcome in a space. All bodies, truly.”</p>
+          <cite>— Priya S.</cite>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>“Dylan’s Restorative class is the best hour of my week. I leave lighter every time.”</p>
+          <cite>— Jordan P.</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section id="schedule" class="schedule-section">
+      <div class="section-header">
+        <h2>Weekly Schedule</h2>
+        <p class="lead">All classes are in-person at our light-filled studio with live online options available. Drop-ins welcome.</p>
+      </div>
+      <div class="schedule-table-wrapper">
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Class</th>
+              <th>Time</th>
+              <th>Duration</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monday</td>
+              <td>Restorative Yoga</td>
+              <td>7:00 PM</td>
+              <td>75 min</td>
+              <td><a href="#schedule" class="btn btn-secondary small" data-sound="chime">Reserve</a></td>
+            </tr>
+            <tr>
+              <td>Tuesday</td>
+              <td>Gentle Flow</td>
+              <td>6:30 PM</td>
+              <td>60 min</td>
+              <td><a href="#schedule" class="btn btn-secondary small" data-sound="chime">Reserve</a></td>
+            </tr>
+            <tr>
+              <td>Wednesday</td>
+              <td>Yin &amp; Meditation</td>
+              <td>7:00 PM</td>
+              <td>75 min</td>
+              <td><a href="#schedule" class="btn btn-secondary small" data-sound="chime">Reserve</a></td>
+            </tr>
+            <tr>
+              <td>Thursday</td>
+              <td>Foundations</td>
+              <td>5:30 PM</td>
+              <td>60 min</td>
+              <td><a href="#schedule" class="btn btn-secondary small" data-sound="chime">Reserve</a></td>
+            </tr>
+            <tr>
+              <td>Saturday</td>
+              <td>Gentle Flow</td>
+              <td>9:00 AM</td>
+              <td>60 min</td>
+              <td><a href="#schedule" class="btn btn-secondary small" data-sound="chime">Reserve</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="schedule-cta">
+        <p>Private sessions, workshops, and corporate events available by request.</p>
+        <a href="mailto:hello@yogawithdylan.com?subject=Yoga%20Inquiry" class="btn btn-primary" data-sound="chime">Email Dylan to book or inquire</a>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>You belong here.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
