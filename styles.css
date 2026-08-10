@@ -4,18 +4,19 @@
   --terracotta: #c45c26;
   --cream: #f8f1e9;
   --olive: #5f6f52;
-  --olive-deep: #4f5f45;
+  --olive-deep: #49573f;
   --charcoal: #2f2925;
   --gold: #f2c572;
-  --muted-text: #6e6259;
+  --muted-text: #62574f;
   --paper: #fffaf4;
+  --tan: #d7c4ad;
   --line: rgba(196, 92, 38, 0.14);
   --shadow-soft: 0 10px 30px rgba(47, 41, 37, 0.08);
   --shadow-strong: 0 24px 50px rgba(47, 41, 37, 0.18);
   --heading-serif: 'Georgia', 'Times New Roman', serif;
   --body-sans: 'Inter', 'Segoe UI', Arial, sans-serif;
-  --radius-lg: 24px;
-  --radius-md: 16px;
+  --radius-lg: 26px;
+  --radius-md: 18px;
 }
 
 * {
@@ -29,7 +30,9 @@ html {
 body {
   margin: 0;
   font-family: var(--body-sans);
-  background: #f8f3eb;
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.55), transparent 30%),
+    linear-gradient(180deg, #f7f1e7 0%, #f6efe4 100%);
   color: var(--charcoal);
 }
 
@@ -46,7 +49,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(248, 241, 233, 0.9);
+  background: rgba(248, 241, 233, 0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(95, 111, 82, 0.14);
 }
@@ -54,7 +57,7 @@ img {
 nav {
   max-width: 1160px;
   margin: 0 auto;
-  padding: 0.75rem 1.5rem;
+  padding: 0.7rem 1.2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -62,12 +65,7 @@ nav {
 }
 
 .logo {
-  font-family: var(--heading-serif);
-  font-size: 1.7rem;
-  font-weight: 700;
-  color: var(--terracotta);
   text-decoration: none;
-  white-space: nowrap;
 }
 
 .logo-image-link {
@@ -77,7 +75,7 @@ nav {
 }
 
 .site-logo-image {
-  width: 108px;
+  width: 104px;
   height: auto;
   display: block;
   border-radius: 14px;
@@ -86,7 +84,7 @@ nav {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.3rem;
+  gap: 1.1rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -98,6 +96,7 @@ nav {
   text-decoration: none;
   color: var(--charcoal);
   font-size: 0.95rem;
+  font-weight: 500;
 }
 
 .nav-links a:hover {
@@ -124,16 +123,18 @@ nav {
 }
 
 main section:not(.hero-section) {
-  padding: 5rem 1.5rem;
+  padding: 4.5rem 1.2rem;
 }
 
 .section-header,
 .about-content,
 .philosophy-grid,
-.classes-grid,
+.classes-group,
 .testimonials-grid,
 .schedule-table-wrapper,
-.schedule-cta {
+.schedule-cta,
+.new-here-card,
+.footer-inner {
   max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
@@ -141,17 +142,19 @@ main section:not(.hero-section) {
 
 .section-header {
   text-align: center;
-  margin-bottom: 2.2rem;
+  margin-bottom: 2rem;
 }
 
 .section-header h2,
 .about-text h2,
 .testimonials-section h2,
-.schedule-section h2 {
-  margin: 0 0 0.5rem;
+.schedule-section h2,
+.new-here-card h2,
+.footer-inner h3 {
+  margin: 0 0 0.55rem;
   color: var(--terracotta);
   font-family: var(--heading-serif);
-  font-size: clamp(2rem, 3.5vw, 2.6rem);
+  font-size: clamp(2rem, 3.2vw, 2.7rem);
 }
 
 .lead,
@@ -159,15 +162,35 @@ main section:not(.hero-section) {
 .schedule-cta p,
 .testimonial p,
 .philo-card p,
-.class-card p {
+.class-listing p,
+.classes-location-card > p,
+.hero-text,
+.new-here-card p,
+.footer-inner p,
+.reassurance-list li {
   color: var(--muted-text);
   line-height: 1.7;
+  font-size: 1rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.65rem;
+  color: var(--olive-deep);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+}
+
+.playful {
+  color: var(--olive-deep);
+  font-style: italic;
 }
 
 .hero-section {
   position: relative;
-  min-height: calc(100vh - 68px);
-  padding-top: 1.25rem;
+  min-height: calc(100vh - 66px);
+  padding-top: 1.2rem;
   overflow: hidden;
   background: #f5f0e6;
 }
@@ -189,9 +212,36 @@ main section:not(.hero-section) {
 }
 
 .hero-overlay {
-  background: linear-gradient(to bottom, rgba(245, 240, 230, 0.02), rgba(245, 240, 230, 0.08));
-  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(245,240,230,0.03), rgba(245,240,230,0.12));
   z-index: 1;
+}
+
+.hero-copy-card {
+  position: absolute;
+  left: clamp(1rem, 5vw, 3.5rem);
+  top: clamp(1.5rem, 9vw, 4.25rem);
+  z-index: 5;
+  max-width: 420px;
+  background: rgba(255, 250, 244, 0.92);
+  border: 1px solid rgba(95, 111, 82, 0.14);
+  border-radius: 24px;
+  padding: 1.25rem 1.2rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.hero-copy-card h1 {
+  margin: 0 0 0.8rem;
+  color: var(--charcoal);
+  font-family: var(--heading-serif);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.02;
+}
+
+.hero-cta-group,
+.hero-ctas {
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
 }
 
 .hero-ctas {
@@ -200,9 +250,6 @@ main section:not(.hero-section) {
   bottom: 14%;
   transform: translateX(-50%);
   z-index: 5;
-  display: flex;
-  gap: 0.9rem;
-  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -210,7 +257,7 @@ main section:not(.hero-section) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.8rem 1.5rem;
+  padding: 0.82rem 1.45rem;
   border-radius: 999px;
   border: 1px solid transparent;
   text-decoration: none;
@@ -234,7 +281,7 @@ main section:not(.hero-section) {
 }
 
 .btn-secondary {
-  background: rgba(255, 250, 244, 0.94);
+  background: rgba(255, 250, 244, 0.97);
   color: var(--charcoal);
   border-color: rgba(95, 111, 82, 0.24);
 }
@@ -245,7 +292,7 @@ main section:not(.hero-section) {
 }
 
 .btn.small {
-  padding: 0.55rem 1rem;
+  padding: 0.56rem 1rem;
   font-size: 0.88rem;
 }
 
@@ -260,9 +307,9 @@ main section:not(.hero-section) {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.35rem;
   flex-wrap: wrap;
-  padding: 0.8rem 1rem;
+  padding: 0.78rem 1rem;
   font-size: 0.82rem;
   letter-spacing: 0.03em;
 }
@@ -273,24 +320,23 @@ main section:not(.hero-section) {
 
 .philosophy-section,
 .about-section,
-.schedule-section {
-  background: #f8f3eb;
+.schedule-section,
+.new-here-section {
+  background: transparent;
 }
 
 .classes-section,
 .testimonials-section {
-  background: #fbf7f1;
+  background: rgba(255,255,255,0.15);
 }
 
 .philosophy-grid,
-.classes-grid,
 .testimonials-grid {
   display: grid;
-  gap: 1.4rem;
+  gap: 1.35rem;
 }
 
-.philosophy-grid,
-.classes-grid {
+.philosophy-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
@@ -299,16 +345,19 @@ main section:not(.hero-section) {
 }
 
 .philo-card,
-.class-card,
-.testimonial {
-  background: var(--paper);
+.testimonial,
+.classes-location-card,
+.new-here-card {
+  background: rgba(255, 250, 244, 0.92);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-soft);
 }
 
 .philo-card,
-.testimonial {
+.testimonial,
+.classes-location-card,
+.new-here-card {
   padding: 1.5rem;
 }
 
@@ -318,45 +367,21 @@ main section:not(.hero-section) {
 }
 
 .philo-card h3,
-.class-card h3 {
-  margin: 0 0 0.5rem;
+.classes-location-card h3,
+.class-listing h4 {
+  margin: 0 0 0.55rem;
   color: var(--charcoal);
-}
-
-.class-card {
-  overflow: hidden;
-}
-
-.card-head {
-  background: linear-gradient(135deg, rgba(196, 92, 38, 0.92), rgba(95, 111, 82, 0.92));
-  color: #fff;
-  padding: 0.85rem 1rem;
-  font-weight: 700;
-}
-
-.card-body {
-  padding: 1.3rem;
-}
-
-.meta {
-  color: var(--terracotta);
-  font-weight: 600;
-  margin-bottom: 0.75rem;
 }
 
 .about-content {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-  gap: 3rem;
+  gap: 2.7rem;
   align-items: center;
 }
 
 .about-text {
-  max-width: 540px;
-}
-
-.about-visual {
-  width: 100%;
+  max-width: 560px;
 }
 
 .about-carousel {
@@ -402,10 +427,6 @@ main section:not(.hero-section) {
   object-position: center 42%;
 }
 
-.about-slide:nth-child(3) .dylan-photo {
-  object-position: center center;
-}
-
 .about-carousel::after {
   content: '';
   position: absolute;
@@ -440,6 +461,46 @@ main section:not(.hero-section) {
   box-shadow: 0 0 0 2px rgba(95, 111, 82, 0.22);
 }
 
+.classes-group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem;
+}
+
+.location-label {
+  display: inline-block;
+  margin-bottom: 0.8rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(95, 111, 82, 0.12);
+  color: var(--olive-deep);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.class-listing + .class-listing {
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px dashed rgba(95, 111, 82, 0.18);
+}
+
+.new-here-card {
+  max-width: 760px;
+  text-align: center;
+}
+
+.reassurance-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.2rem 0;
+}
+
+.reassurance-list li {
+  margin-bottom: 0.6rem;
+}
+
 .testimonials-section h2 {
   text-align: center;
   margin-bottom: 2rem;
@@ -453,7 +514,7 @@ main section:not(.hero-section) {
 
 .schedule-table-wrapper {
   overflow-x: auto;
-  background: var(--paper);
+  background: rgba(255, 250, 244, 0.94);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-soft);
@@ -469,6 +530,7 @@ main section:not(.hero-section) {
   padding: 1rem;
   text-align: left;
   border-bottom: 1px solid rgba(95, 111, 82, 0.08);
+  vertical-align: top;
 }
 
 .schedule-table th {
@@ -482,6 +544,16 @@ main section:not(.hero-section) {
 .schedule-cta {
   text-align: center;
   margin-top: 2rem;
+}
+
+.footer-inner {
+  text-align: center;
+}
+
+.footer-line {
+  margin-top: 1rem;
+  color: #f7f0e6 !important;
+  font-style: italic;
 }
 
 .reveal {
@@ -499,22 +571,27 @@ main section:not(.hero-section) {
   background: var(--olive-deep);
   color: #f6efe5;
   text-align: center;
-  padding: 1.3rem 1rem;
-  font-style: italic;
+  padding: 2rem 1rem;
+}
+
+.site-footer a {
+  color: #fff7ee;
 }
 
 @media (max-width: 1080px) {
   .philosophy-grid,
-  .classes-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
+  .classes-group,
+  .testimonials-grid,
   .about-content {
     grid-template-columns: 1fr;
   }
 
   .about-text {
     max-width: none;
+  }
+
+  .hero-copy-card {
+    max-width: 420px;
   }
 }
 
@@ -555,8 +632,16 @@ main section:not(.hero-section) {
     display: none;
   }
 
+  .hero-copy-card {
+    position: static;
+    margin: 1rem;
+    max-width: none;
+  }
+
   .hero-ctas {
-    bottom: 9%;
+    position: static;
+    transform: none;
+    margin: 1rem auto 0;
     width: calc(100% - 2rem);
   }
 
@@ -567,11 +652,10 @@ main section:not(.hero-section) {
 
 @media (max-width: 640px) {
   main section:not(.hero-section) {
-    padding: 3.5rem 1rem;
+    padding: 3.4rem 1rem;
   }
 
-  .philosophy-grid,
-  .classes-grid {
+  .philosophy-grid {
     grid-template-columns: 1fr;
   }
 
@@ -580,14 +664,11 @@ main section:not(.hero-section) {
   }
 
   .nav-links a {
-    font-size: 0.9rem;
+    font-size: 0.92rem;
   }
 
-  .hero-ctas {
-    position: static;
-    transform: none;
-    margin: 1rem auto 0;
-    padding: 0 1rem 4.2rem;
+  .hero-copy-card h1 {
+    font-size: 2.4rem;
   }
 
   .hero-bottom-bar {
@@ -598,5 +679,11 @@ main section:not(.hero-section) {
 
   .dylan-photo {
     height: 380px;
+  }
+
+  .schedule-table th,
+  .schedule-table td {
+    padding: 0.8rem;
+    font-size: 0.94rem;
   }
 }

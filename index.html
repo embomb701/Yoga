@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Yoga with Dylan – Come as you are. Premium yoga, all levels, all bodies, all hearts.">
-  <meta property="og:title" content="Yoga with Dylan">
-  <meta property="og:description" content="Come as you are. Space to breathe. Time to be you. A premium yoga experience for everyone.">
+  <meta name="description" content="Come As You Are — Yoga with Dylan. Warm, welcoming yoga in Cape Coral for real people in real bodies.">
+  <meta property="og:title" content="Come As You Are — Yoga with Dylan">
+  <meta property="og:description" content="You do not need to be flexible, calm, experienced, or 'good at yoga' to belong here. Come as you are.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/images/og-preview.jpg">
-  <title>Yoga with Dylan</title>
+  <title>Come As You Are — Yoga with Dylan</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="assets/icons/favicon.svg?v=2" type="image/svg+xml">
   <link rel="shortcut icon" href="assets/icons/favicon.svg?v=2" type="image/svg+xml">
@@ -20,11 +20,11 @@
         <img src="assets/images/site-logo.jpg" alt="Yoga with Dylan logo" class="site-logo-image">
       </a>
       <ul class="nav-links">
-        <li><a href="#philosophy">Philosophy</a></li>
-        <li><a href="#classes">Classes</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#classes">Classes</a></li>
         <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#new-here">New Here?</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
       <button id="audio-toggle" class="audio-btn" aria-pressed="false" aria-label="Toggle site sounds">
         <span class="icon-mute"></span>
@@ -39,9 +39,15 @@
         <div class="hero-overlay"></div>
       </div>
 
-      <div class="hero-ctas">
-        <a href="#schedule" class="btn btn-primary magnetic" data-sound="chime">Join a Class</a>
-        <a href="#philosophy" class="btn btn-secondary" data-sound="whoosh">Begin Here</a>
+      <div class="hero-copy-card reveal revealed">
+        <p class="eyebrow">COME AS YOU ARE</p>
+        <h1>Yoga for real people in real bodies.</h1>
+        <p class="hero-text">You do not need to be flexible, calm, experienced, fit, or good at yoga to belong here. You just need to show up exactly as you are.</p>
+        <p class="hero-text playful">Wobbling counts. Resting counts. Laughing counts too.</p>
+        <div class="hero-cta-group">
+          <a href="#schedule" class="btn btn-primary magnetic" data-sound="chime">Find Your Class</a>
+          <a href="#new-here" class="btn btn-secondary" data-sound="whoosh">I’m New Here</a>
+        </div>
       </div>
 
       <div class="hero-bottom-bar">
@@ -54,85 +60,41 @@
 
     <section id="philosophy" class="philosophy-section">
       <div class="section-header">
-        <h2>Our Philosophy</h2>
-        <p class="lead">Yoga is not about the perfect pose. It’s about coming home to yourself, breath by breath.</p>
+        <h2>Come As You Are</h2>
+        <p class="lead">This practice is not about performing. It is about breathing, paying attention, and coming back to yourself one class at a time.</p>
       </div>
       <div class="philosophy-grid">
         <div class="philo-card" data-sound="breath">
           <img src="assets/icons/breathe.svg" alt="Breathe">
           <h3>Come as you are</h3>
-          <p>No experience required. No perfect body. Just show up exactly as you are.</p>
+          <p>You do not need to stretch first, get in shape first, or know what anything is called. You can walk in exactly as you are today.</p>
         </div>
         <div class="philo-card" data-sound="move">
           <img src="assets/icons/move.svg" alt="Move">
           <h3>Move with intention</h3>
-          <p>Every posture is an invitation to listen. Strength and softness live together here.</p>
+          <p>We are not trying to force a pose. We are learning how to move, notice, breathe, and feel a little more at home in our bodies.</p>
         </div>
         <div class="philo-card" data-sound="reset">
           <img src="assets/icons/reset.svg" alt="Reset">
           <h3>Reset &amp; return</h3>
-          <p>Leave the noise at the door. Find stillness that travels with you off the mat.</p>
+          <p>Some days yoga feels grounding. Some days it feels messy. Both count. You can always pause, reset, and begin again.</p>
         </div>
         <div class="philo-card" data-sound="be-you">
           <img src="assets/icons/be-you.svg" alt="Be You">
           <h3>Be fully you</h3>
-          <p>This is your space to feel, to rest, to grow — without judgment or comparison.</p>
+          <p>No pretzel requirements. No keeping up. No proving anything. Just space to breathe, practice, and be a human for a while.</p>
         </div>
       </div>
     </section>
 
-    <section id="classes" class="classes-section">
-      <div class="section-header">
-        <h2>Classes for Every Body</h2>
-        <p class="lead">Thoughtful sequences. Welcoming energy. All levels, all ages, all hearts.</p>
-      </div>
-      <div class="classes-grid">
-        <article class="class-card" data-sound="breath">
-          <div class="card-head">Gentle Flow</div>
-          <div class="card-body">
-            <h3>Gentle Flow</h3>
-            <div class="meta">All levels • 60 min</div>
-            <p>A slow, breath-led vinyasa. Perfect for beginners or anyone craving mindful movement.</p>
-            <a href="#schedule" class="btn btn-secondary small" data-sound="chime">Reserve spot</a>
-          </div>
-        </article>
-        <article class="class-card" data-sound="move">
-          <div class="card-head">Restorative</div>
-          <div class="card-body">
-            <h3>Restorative Yoga</h3>
-            <div class="meta">All levels • 75 min</div>
-            <p>Deep rest with props. Release tension and let the nervous system settle.</p>
-            <a href="#schedule" class="btn btn-secondary small" data-sound="chime">Reserve spot</a>
-          </div>
-        </article>
-        <article class="class-card" data-sound="reset">
-          <div class="card-head">Yin &amp; Still</div>
-          <div class="card-body">
-            <h3>Yin &amp; Meditation</h3>
-            <div class="meta">All levels • 75 min</div>
-            <p>Long-held postures + guided stillness. Cultivate presence and deep release.</p>
-            <a href="#schedule" class="btn btn-secondary small" data-sound="chime">Reserve spot</a>
-          </div>
-        </article>
-        <article class="class-card" data-sound="be-you">
-          <div class="card-head">Foundations</div>
-          <div class="card-body">
-            <h3>Foundations</h3>
-            <div class="meta">Beginners welcome • 60 min</div>
-            <p>Learn the basics with care. Build confidence, alignment, and breath awareness.</p>
-            <a href="#schedule" class="btn btn-secondary small" data-sound="chime">Reserve spot</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
     <section id="about" class="about-section">
-      <div class="about-content reveal">
+      <div class="about-content reveal revealed">
         <div class="about-text">
-          <h2>Meet Dylan</h2>
-          <p>Dylan has been practicing yoga for over 15 years. Her teaching is rooted in accessibility, breath, and the radical idea that everyone belongs on the mat.</p>
-          <p>With years of dedicated teaching experience and certification, she draws from multiple lineages with a deep focus on trauma-informed practices and meeting students exactly where they are. Whether you’re brand new or have been practicing for decades, you’ll find a home here.</p>
-          <p>Classes emphasize kindness over achievement and presence over perfection.</p>
+          <h2>About Dylan</h2>
+          <p>Dylan has been practicing yoga for over 15 years, and one of the reasons she teaches is because she needs the practice too.</p>
+          <p>For her, yoga is about a lot more than flexibility or fancy poses. It is about learning how to breathe, pay attention, create space, move more comfortably, regulate your nervous system, and keep returning to yourself.</p>
+          <p>She is an experienced certified yoga teacher with a trauma-informed, beginner-welcoming approach. Her classes are supportive, real, and free of performative yoga energy.</p>
+          <p class="playful">If you wobble, laugh, take a break, or use every prop in the room, you are doing it right.</p>
         </div>
 
         <div class="about-visual">
@@ -154,32 +116,87 @@
       </div>
     </section>
 
+    <section id="classes" class="classes-section">
+      <div class="section-header">
+        <h2>Classes</h2>
+        <p class="lead">Simple, supportive classes that tell you what to expect — so you do not have to guess whether you belong there.</p>
+      </div>
+
+      <div class="classes-group">
+        <div class="classes-location-card reveal revealed">
+          <div class="location-label">Independent Classes</div>
+          <h3>Dynamic BJJ Cape Coral</h3>
+          <p>No gym membership required. These are Dylan’s independent classes and anyone is welcome to join.</p>
+          <div class="class-listing">
+            <h4>Gentle Reset Yoga</h4>
+            <p><strong>What we’re doing:</strong> easy-to-follow movement, supported stretching, breathwork, and time to settle down.</p>
+            <p><strong>You’ll probably feel:</strong> looser, calmer, more grounded, and less like your shoulders live up by your ears.</p>
+            <p><strong>Good for you if:</strong> you’re brand new, stiff, stressed, tired, or just want yoga that feels approachable.</p>
+          </div>
+          <div class="class-listing">
+            <h4>Sunday Slow Flow</h4>
+            <p><strong>What we’re doing:</strong> slow guided movement with time to breathe, notice your body, and move without rushing.</p>
+            <p><strong>You’ll probably feel:</strong> more open, more connected, and a little more like yourself again.</p>
+            <p><strong>Good for you if:</strong> you want movement without pressure and a class that meets you where you are.</p>
+          </div>
+        </div>
+
+        <div class="classes-location-card reveal revealed">
+          <div class="location-label">Crunch Fitness Cape Coral</div>
+          <h3>Crunch Classes</h3>
+          <p>These classes are taught by Dylan at Crunch Fitness Cape Coral. Please check your Crunch membership or guest access before attending.</p>
+          <div class="class-listing">
+            <h4>Crunch Yoga Classes</h4>
+            <p><strong>What we’re doing:</strong> beginner-friendly yoga with movement, breath, and accessible options throughout class.</p>
+            <p><strong>You’ll probably feel:</strong> stronger, more stretched out, and more comfortable in your body.</p>
+            <p><strong>Good for you if:</strong> you want a supportive class inside the gym setting and like having options as you go.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="new-here" class="new-here-section">
+      <div class="new-here-card reveal revealed">
+        <p class="eyebrow">NEW TO YOGA?</p>
+        <h2>Never done yoga? Perfect.</h2>
+        <ul class="reassurance-list">
+          <li>You do not need to touch your toes.</li>
+          <li>You do not need fancy clothes.</li>
+          <li>You do not need to know the poses.</li>
+          <li>You do not need to be flexible.</li>
+          <li>You absolutely do not have to keep up with anyone else.</li>
+        </ul>
+        <p>Just come as you are.</p>
+        <a href="#schedule" class="btn btn-primary" data-sound="chime">Come Practice With Us</a>
+      </div>
+    </section>
+
     <section id="testimonials" class="testimonials-section">
-      <h2>Voices from the Community</h2>
+      <h2>What Students Are Really Saying</h2>
       <div class="testimonials-grid">
-        <blockquote class="testimonial">
-          <p>“For the first time in years I felt safe and seen in a yoga class. Dylan creates magic.”</p>
-          <cite>— Lena T.</cite>
+        <blockquote class="testimonial reveal revealed">
+          <p>“I was terrified to try yoga because I thought I wasn’t flexible enough. Dylan made it feel normal to be new.”</p>
+          <cite>— Future quote spot</cite>
         </blockquote>
-        <blockquote class="testimonial">
-          <p>“The breath work and gentle pace changed how I move through my whole week.”</p>
-          <cite>— Marcus K.</cite>
+        <blockquote class="testimonial reveal revealed">
+          <p>“I finally stopped comparing myself to everyone else in the room and actually enjoyed the practice.”</p>
+          <cite>— Future quote spot</cite>
         </blockquote>
-        <blockquote class="testimonial">
-          <p>“I’ve never felt more welcome in a space. All bodies, truly.”</p>
-          <cite>— Priya S.</cite>
+        <blockquote class="testimonial reveal revealed">
+          <p>“I didn’t feel like I had to perform. I felt like I could just breathe and be a person.”</p>
+          <cite>— Future quote spot</cite>
         </blockquote>
-        <blockquote class="testimonial">
-          <p>“Dylan’s Restorative class is the best hour of my week. I leave lighter every time.”</p>
-          <cite>— Jordan P.</cite>
+        <blockquote class="testimonial reveal revealed">
+          <p>“Wobbling counted. Resting counted. That changed everything for me.”</p>
+          <cite>— Future quote spot</cite>
         </blockquote>
       </div>
     </section>
 
-    <section id="schedule" class="schedule-section">
+    <section id="schedule" class="schedule-section reveal revealed">
       <div class="section-header">
-        <h2>Weekly Schedule</h2>
-        <p class="lead">Join Dylan for welcoming all-levels classes throughout the week. Drop in anytime or choose an unlimited monthly pass.</p>
+        <h2>See This Week’s Schedule</h2>
+        <p class="lead">Easy to scan, easy to show up for, and no hunting around to figure out where you’re supposed to be.</p>
       </div>
       <div class="schedule-table-wrapper">
         <table class="schedule-table">
@@ -187,42 +204,52 @@
             <tr>
               <th>Day</th>
               <th>Time</th>
-              <th>Duration</th>
-              <th></th>
+              <th>Class</th>
+              <th>Location</th>
+              <th>How to Attend</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>Tuesday</td>
               <td>10:00 AM – 11:00 AM</td>
-              <td>60 min</td>
-              <td><a href="#schedule" class="btn btn-secondary small" data-sound="chime">Reserve</a></td>
+              <td>Gentle Reset Yoga</td>
+              <td>Dynamic BJJ Cape Coral</td>
+              <td><a href="mailto:hello@yogawithdylan.com?subject=Tuesday%20Class%20Question" class="btn btn-secondary small" data-sound="chime">Find Your Class</a></td>
             </tr>
             <tr>
               <td>Thursday</td>
               <td>10:00 AM – 11:00 AM</td>
-              <td>60 min</td>
-              <td><a href="#schedule" class="btn btn-secondary small" data-sound="chime">Reserve</a></td>
+              <td>Gentle Reset Yoga</td>
+              <td>Dynamic BJJ Cape Coral</td>
+              <td><a href="mailto:hello@yogawithdylan.com?subject=Thursday%20Class%20Question" class="btn btn-secondary small" data-sound="chime">Find Your Class</a></td>
             </tr>
             <tr>
               <td>Sunday</td>
               <td>6:30 PM – 8:00 PM</td>
-              <td>90 min</td>
-              <td><a href="#schedule" class="btn btn-secondary small" data-sound="chime">Reserve</a></td>
+              <td>Sunday Slow Flow</td>
+              <td>Dynamic BJJ Cape Coral</td>
+              <td><a href="mailto:hello@yogawithdylan.com?subject=Sunday%20Class%20Question" class="btn btn-secondary small" data-sound="chime">Find Your Class</a></td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="schedule-cta pricing-cta">
-        <p><strong>$15</strong> drop-in fee or <strong>$50</strong> for unlimited classes for one month.</p>
-        <p>Private sessions, workshops, and community events are also available by request.</p>
-        <a href="mailto:hello@yogawithdylan.com?subject=Yoga%20Inquiry" class="btn btn-primary" data-sound="chime">Email Dylan to book or inquire</a>
+        <p><strong>$15</strong> drop-in fee or <strong>$50</strong> unlimited classes for one month.</p>
+        <p>Want to make sure you’re choosing the right class? Start here and I’ll help.</p>
+        <a href="mailto:hello@yogawithdylan.com?subject=I%27m%20New%20Here" class="btn btn-primary" data-sound="chime">Have a Question?</a>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>You belong here. ♡</p>
+  <footer id="contact" class="site-footer">
+    <div class="footer-inner">
+      <h3>Come As You Are — Yoga with Dylan</h3>
+      <p>Cape Coral, Florida</p>
+      <p><a href="mailto:hello@yogawithdylan.com">hello@yogawithdylan.com</a></p>
+      <p>Class locations: Dynamic BJJ Cape Coral + Crunch Fitness Cape Coral</p>
+      <p class="footer-line">You do not have to become someone else to practice yoga. Come as you are. 🪷</p>
+    </div>
   </footer>
 
   <script src="script.js"></script>
